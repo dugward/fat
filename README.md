@@ -1,6 +1,6 @@
 # D-FAT (Dugward's film award tracker)
 
-A site to track which award-nominated films you have watched each year and make you upset by showing your firends' progress.
+A site to track which award-nominated films you have watched each year and make you upset by showing your friends' progress.
 
 ## To Use
 
