@@ -2,12 +2,13 @@ import {
   oscarList,
   shortsList,
   globesList,
-  // predictList,
+  predictList,
   fiftyList,
   spiritsList,
   sagList,
   baftaList,
   unionList,
+  lastList,
 } from "./lists.js";
 
 console.log(unionList);
@@ -239,10 +240,10 @@ leaderslink.addEventListener("click", function () {
     //
     document.getElementById(
       "oscarList"
-    ).innerHTML = `<div class="row leadersTitle">Oscars</div>`;
+    ).innerHTML = `<div class="row leadersTitle">Early Predicts</div>`;
     //
     db.collection("users")
-      .orderBy("oscar", "desc")
+      .orderBy("twentytwo", "desc")
       .get()
       .then(function (x) {
         x.forEach(function (doc) {
@@ -253,206 +254,228 @@ leaderslink.addEventListener("click", function () {
             `            <div class="row leaderrow">
                         <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
                         <div class="myProgress leaderbar">
-                          <div class="myBar" style="width:${userData.oscar}%;">${userData.oscar}%</div>
+                          <div class="myBar" style="width:${userData.twentytwo}%;">${userData.twentytwo}%</div>
                         </div>
                       </div>`
           );
         });
       });
-    //
+
+    // document.getElementById(
+    //   "shortsList"
+    // ).innerHTML = `<div class="row leadersTitle">Shorts</div>`;
+    // //
+    // db.collection("users")
+    //   .orderBy("shorts", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+
+    //       document.getElementById("shortsList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                       <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
+    //                       <div class="myProgress leaderbar">
+    //                         <div class="myBar" style="width:${userData.shorts}%;">${userData.shorts}%</div>
+    //                       </div>
+    //                     </div>`
+    //       );
+    //     });
+    //   });
+
+    // document.getElementById(
+    //   "globesList"
+    // ).innerHTML = `<div class="row leadersTitle">Globes</div>`;
+    // //
+    // db.collection("users")
+    //   .orderBy("globes", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+    //       document.getElementById("globesList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                     <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
+    //                     <div class="myProgress leaderbar">
+    //                       <div class="myBar" style="width:${userData.globes}%;">${userData.globes}%</div>
+    //                     </div>
+    //                   </div>`
+    //       );
+    //     });
+    //   });
+
+    // //
+    // document.getElementById(
+    //   "spiritsList"
+    // ).innerHTML = `<div class="row leadersTitle">Spirits</div>`;
+    // //
+    // db.collection("users")
+    //   .orderBy("spirits", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+    //       document.getElementById("spiritsList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                       <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
+    //                       <div class="myProgress leaderbar">
+    //                         <div class="myBar" style="width:${userData.spirits}%;">${userData.spirits}%</div>
+    //                       </div>
+    //                     </div>`
+    //       );
+    //     });
+    //   });
+    // //
+
+    // document.getElementById(
+    //   "sagList"
+    // ).innerHTML = `<div class="row leadersTitle">SAGs</div>`;
+    // //
+    // db.collection("users")
+    //   .orderBy("sag", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+    //       document.getElementById("sagList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                       <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
+    //                       <div class="myProgress leaderbar">
+    //                         <div class="myBar" style="width:${userData.sag}%;">${userData.sag}%</div>
+    //                       </div>
+    //                     </div>`
+    //       );
+    //     });
+    //   });
+    // //
+    // document.getElementById(
+    //   "baftaList"
+    // ).innerHTML = `<div class="row leadersTitle">BAFTAs <a id="shortsBafta">(remove shorts)</a><a id="backBafta" style="display:none">(add shorts)</a></div>`;
+    // //
+    // db.collection("users")
+    //   .orderBy("bafta", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+    //       document.getElementById("baftaList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                       <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
+    //                       <div class="myProgress leaderbar">
+    //                         <div class="myBar bafta" style="width:${userData.bafta}%;">${userData.bafta}%</div>
+    //                       </div>
+    //                     </div>`
+    //       );
+    //     });
+    //   })
+    //   .then(
+    //     document.querySelector("#shortsBafta").addEventListener("click", () => {
+    //       let bars = document.querySelectorAll(".mybar,.bafta");
+    //       bars.forEach((el) => {
+    //         let perc1 = el.innerText.slice(0, -1);
+    //         let perc = perc1 / 100;
+    //         console.log(perc);
+    //         let numWatched = Math.round(perc * baftaList.length);
+    //         console.log(numWatched);
+    //         let newPer = Math.round(
+    //           (numWatched / (baftaList.length - 8)) * 100
+    //         );
+    //         console.log(newPer);
+    //         el.style.width = `${newPer}%`;
+    //         el.innerText = `${newPer}%`;
+    //         document.querySelector("#shortsBafta").style.display = "none";
+    //         document.querySelector("#backBafta").style.display = "inline";
+
+    //         //
+    //       });
+    //     })
+    //   )
+    //   .then(
+    //     document.querySelector("#backBafta").addEventListener("click", () => {
+    //       let bars = document.querySelectorAll(".mybar,.bafta");
+    //       bars.forEach((el) => {
+    //         let perc1 = el.innerText.slice(0, -1);
+    //         let perc = perc1 / 100;
+    //         console.log(perc);
+    //         let numWatched = Math.round(perc * (baftaList.length - 8));
+    //         console.log(numWatched);
+    //         let newPer = Math.round((numWatched / baftaList.length) * 100);
+    //         console.log(newPer);
+    //         el.style.width = `${newPer}%`;
+    //         el.innerText = `${newPer}%`;
+    //         document.querySelector("#backBafta").style.display = "none";
+    //         document.querySelector("#shortsBafta").style.display = "inline";
+    //         //
+    //       });
+    //     })
+    //   );
+    // //
+    // document.getElementById(
+    //   "fiftyList"
+    // ).innerHTML = `<div class="row leadersTitle">Best 50</div>`;
+    // //
+    // db.collection("users")
+    //   .orderBy("fifty", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+    //       document.getElementById("fiftyList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                     <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
+    //                     <div class="myProgress leaderbar">
+    //                       <div class="myBar" style="width:${userData.fifty}%;">${userData.fifty}%</div>
+    //                     </div>
+    //                   </div>`
+    //       );
+    //     });
+    //   });
+    // document.getElementById(
+    //   "unionList"
+    // ).innerHTML = `<div class="row leadersTitle">∩ List</div>`;
+    // db.collection("users")
+    //   .orderBy("union", "desc")
+    //   .get()
+    //   .then(function (x) {
+    //     x.forEach(function (doc) {
+    //       var userData = doc.data();
+
+    //       document.getElementById("unionList").insertAdjacentHTML(
+    //         "beforeend",
+    //         `            <div class="row leaderrow">
+    //                     <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
+    //                     <div class="myProgress leaderbar">
+    //                       <div class="myBar" style="width:${userData.union}%;">${userData.union}%</div>
+    //                     </div>
+    //                   </div>`
+    //       );
+    //     });
+    //   });
+
     document.getElementById(
-      "shortsList"
-    ).innerHTML = `<div class="row leadersTitle">Shorts</div>`;
-    //
+      "lastList"
+    ).innerHTML = `<div class="row leadersTitle">2021 List</div>`;
     db.collection("users")
-      .orderBy("shorts", "desc")
+      .orderBy("twentyone", "desc")
       .get()
       .then(function (x) {
         x.forEach(function (doc) {
           var userData = doc.data();
 
-          document.getElementById("shortsList").insertAdjacentHTML(
+          document.getElementById("lastList").insertAdjacentHTML(
             "beforeend",
             `            <div class="row leaderrow">
                           <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
                           <div class="myProgress leaderbar">
-                            <div class="myBar" style="width:${userData.shorts}%;">${userData.shorts}%</div>
+                            <div class="myBar" style="width:${userData.twentyone}%;">${userData.twentyone}%</div>
                           </div>
                         </div>`
-          );
-        });
-      });
-    //
-    document.getElementById(
-      "globesList"
-    ).innerHTML = `<div class="row leadersTitle">Globes</div>`;
-    //
-    db.collection("users")
-      .orderBy("globes", "desc")
-      .get()
-      .then(function (x) {
-        x.forEach(function (doc) {
-          var userData = doc.data();
-          document.getElementById("globesList").insertAdjacentHTML(
-            "beforeend",
-            `            <div class="row leaderrow">
-                        <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
-                        <div class="myProgress leaderbar">
-                          <div class="myBar" style="width:${userData.globes}%;">${userData.globes}%</div>
-                        </div>
-                      </div>`
-          );
-        });
-      });
-
-    //
-    document.getElementById(
-      "spiritsList"
-    ).innerHTML = `<div class="row leadersTitle">Spirits</div>`;
-    //
-    db.collection("users")
-      .orderBy("spirits", "desc")
-      .get()
-      .then(function (x) {
-        x.forEach(function (doc) {
-          var userData = doc.data();
-          document.getElementById("spiritsList").insertAdjacentHTML(
-            "beforeend",
-            `            <div class="row leaderrow">
-                          <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
-                          <div class="myProgress leaderbar">
-                            <div class="myBar" style="width:${userData.spirits}%;">${userData.spirits}%</div>
-                          </div>
-                        </div>`
-          );
-        });
-      });
-    //
-
-    document.getElementById(
-      "sagList"
-    ).innerHTML = `<div class="row leadersTitle">SAGs</div>`;
-    //
-    db.collection("users")
-      .orderBy("sag", "desc")
-      .get()
-      .then(function (x) {
-        x.forEach(function (doc) {
-          var userData = doc.data();
-          document.getElementById("sagList").insertAdjacentHTML(
-            "beforeend",
-            `            <div class="row leaderrow">
-                          <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
-                          <div class="myProgress leaderbar">
-                            <div class="myBar" style="width:${userData.sag}%;">${userData.sag}%</div>
-                          </div>
-                        </div>`
-          );
-        });
-      });
-    //
-    document.getElementById(
-      "baftaList"
-    ).innerHTML = `<div class="row leadersTitle">BAFTAs <a id="shortsBafta">(remove shorts)</a><a id="backBafta" style="display:none">(add shorts)</a></div>`;
-    //
-    db.collection("users")
-      .orderBy("bafta", "desc")
-      .get()
-      .then(function (x) {
-        x.forEach(function (doc) {
-          var userData = doc.data();
-          document.getElementById("baftaList").insertAdjacentHTML(
-            "beforeend",
-            `            <div class="row leaderrow">
-                          <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
-                          <div class="myProgress leaderbar">
-                            <div class="myBar bafta" style="width:${userData.bafta}%;">${userData.bafta}%</div>
-                          </div>
-                        </div>`
-          );
-        });
-      })
-      .then(
-        document.querySelector("#shortsBafta").addEventListener("click", () => {
-          let bars = document.querySelectorAll(".mybar,.bafta");
-          bars.forEach((el) => {
-            let perc1 = el.innerText.slice(0, -1);
-            let perc = perc1 / 100;
-            console.log(perc);
-            let numWatched = Math.round(perc * baftaList.length);
-            console.log(numWatched);
-            let newPer = Math.round(
-              (numWatched / (baftaList.length - 8)) * 100
-            );
-            console.log(newPer);
-            el.style.width = `${newPer}%`;
-            el.innerText = `${newPer}%`;
-            document.querySelector("#shortsBafta").style.display = "none";
-            document.querySelector("#backBafta").style.display = "inline";
-
-            //
-          });
-        })
-      )
-      .then(
-        document.querySelector("#backBafta").addEventListener("click", () => {
-          let bars = document.querySelectorAll(".mybar,.bafta");
-          bars.forEach((el) => {
-            let perc1 = el.innerText.slice(0, -1);
-            let perc = perc1 / 100;
-            console.log(perc);
-            let numWatched = Math.round(perc * (baftaList.length - 8));
-            console.log(numWatched);
-            let newPer = Math.round((numWatched / baftaList.length) * 100);
-            console.log(newPer);
-            el.style.width = `${newPer}%`;
-            el.innerText = `${newPer}%`;
-            document.querySelector("#backBafta").style.display = "none";
-            document.querySelector("#shortsBafta").style.display = "inline";
-            //
-          });
-        })
-      );
-    //
-    document.getElementById(
-      "fiftyList"
-    ).innerHTML = `<div class="row leadersTitle">Best 50</div>`;
-    //
-    db.collection("users")
-      .orderBy("fifty", "desc")
-      .get()
-      .then(function (x) {
-        x.forEach(function (doc) {
-          var userData = doc.data();
-          document.getElementById("fiftyList").insertAdjacentHTML(
-            "beforeend",
-            `            <div class="row leaderrow">
-                        <div class="leadername ${userData.name}"  id="${doc.id}" ><a>${userData.name}</a></div>
-                        <div class="myProgress leaderbar">
-                          <div class="myBar" style="width:${userData.fifty}%;">${userData.fifty}%</div>
-                        </div>
-                      </div>`
-          );
-        });
-      });
-    document.getElementById(
-      "unionList"
-    ).innerHTML = `<div class="row leadersTitle">∩ List</div>`;
-    db.collection("users")
-      .orderBy("union", "desc")
-      .get()
-      .then(function (x) {
-        x.forEach(function (doc) {
-          var userData = doc.data();
-
-          document.getElementById("unionList").insertAdjacentHTML(
-            "beforeend",
-            `            <div class="row leaderrow">
-                        <div class="leadername ${userData.name}"  id="${doc.id}"><a  >${userData.name}</a></div>
-                        <div class="myProgress leaderbar">
-                          <div class="myBar" style="width:${userData.union}%;">${userData.union}%</div>
-                        </div>
-                      </div>`
           );
         });
       });
@@ -634,6 +657,9 @@ function putUpPosters() {
     }
     if (checked[i].id == "union") {
       toggleList = toggleList.concat(unionList);
+    }
+    if (checked[i].id == "last") {
+      toggleList = toggleList.concat(lastList);
     }
 
     //Cut out the dupes
@@ -838,10 +864,17 @@ function putUpPosters() {
                   (100 * unionMatch.length) / unionList.length
                 );
 
+                var lastMatch = dbWatched.filter((element) =>
+                  lastList.includes(element)
+                );
+                var lastRatio = Math.round(
+                  (100 * lastMatch.length) / lastList.length
+                );
+
                 userDoc.set(
                   {
                     // predict: predictRatio,
-                    oscar: oscarRatio,
+                    twentytwo: oscarRatio,
                     shorts: shortsRatio,
                     globes: globesRatio,
                     spirits: spiritsRatio,
@@ -849,6 +882,7 @@ function putUpPosters() {
                     bafta: baftaRatio,
                     fifty: fiftyRatio,
                     union: unionRatio,
+                    twentyone: lastRatio,
                   },
                   { merge: true }
                 );
